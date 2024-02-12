@@ -1,5 +1,6 @@
 package com.youcode.myreview.security.auth;
 
+import com.youcode.myreview.security.user.dto.UserReqDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,13 +18,13 @@ import java.io.IOException;
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
-    @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterRequest request
-    ){
-        return ResponseEntity.ok(authenticationService.register(request));
-    }
 
+@PostMapping("/register")
+public ResponseEntity<AuthenticationResponse> register(
+        @RequestBody UserReqDTO request
+) {
+    return ResponseEntity.ok(authenticationService.register(request));
+}
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
